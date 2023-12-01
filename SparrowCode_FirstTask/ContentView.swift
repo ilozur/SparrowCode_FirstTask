@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            TabView {
+                ScrollView {
+                    ForEach(1 ... 100, id: \.self) { number in
+                        Text("\(number)").font(.system(size: 24, design: .monospaced)).bold().foregroundStyle(.gray)
+                    }
+                }
+                .tabItem {
+                        Image(systemName: "star.fill")
+                        Text("First")
+                    }
+            }
         }
-        .padding()
+    
+    var redRectangle: some View {
+        Rectangle()
+            .frame(height: 50)
     }
 }
 
