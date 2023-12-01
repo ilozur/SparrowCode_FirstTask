@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var rectangleHeight: CGFloat = 50
+
 struct ContentView: View {
     var body: some View {
             TabView {
@@ -14,16 +16,17 @@ struct ContentView: View {
                     ScrollView {
                         VStack {
                             ForEach(1 ... 100, id: \.self) { number in
-                                Text("\(number)").font(.system(size: 24, design: .monospaced)).bold().foregroundStyle(.gray)
+                                Text("\(number)")
+                                    .font(.system(size: 24, design: .monospaced))
+                                    .foregroundStyle(.gray)
                             }
                             .frame(maxWidth: .infinity)
                         }
-                        .padding(.bottom, 50)
+                        .padding(.bottom, rectangleHeight)
                     }
-                    .contentMargins(.bottom, 50, for: .scrollIndicators)
+                    .contentMargins(.bottom, rectangleHeight, for: .scrollIndicators)
                     redRectangle
                 }
-                
                 .tabItem {
                     Label("First", systemImage: "star.fill")
                 }
@@ -39,7 +42,7 @@ struct ContentView: View {
     var redRectangle: some View {
         Rectangle()
             .fill(Color.clear)
-            .frame(height: 50)
+            .frame(height: rectangleHeight)
             .background(Color.red.opacity(0.8))
     }
 }
