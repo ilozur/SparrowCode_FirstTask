@@ -10,24 +10,35 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
             TabView {
-                ScrollView {
-                    VStack {
-                        ForEach(1 ... 100, id: \.self) { number in
-                            Text("\(number)").font(.system(size: 24, design: .monospaced)).bold().foregroundStyle(.gray)
+                ZStack(alignment: .bottom) {
+                    ScrollView {
+                        VStack {
+                            ForEach(1 ... 100, id: \.self) { number in
+                                Text("\(number)").font(.system(size: 24, design: .monospaced)).bold().foregroundStyle(.gray)
+                            }
                         }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
+                    redRectangle
                 }
+                
                 .tabItem {
-                        Image(systemName: "star.fill")
-                        Text("First")
-                    }
+                    Label("First", systemImage: "star.fill")
+                }
+            }
+            .onAppear {
+                let appearance = UITabBarAppearance()
+                appearance.backgroundColor = UIColor(Color.white)
+                UITabBar.appearance().standardAppearance = appearance
+                UITabBar.appearance().scrollEdgeAppearance = appearance
             }
         }
     
     var redRectangle: some View {
         Rectangle()
+            .fill(Color.clear)
             .frame(height: 50)
+            .background(Color.red.opacity(0.8))
     }
 }
 
