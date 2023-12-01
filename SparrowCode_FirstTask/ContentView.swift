@@ -11,9 +11,12 @@ struct ContentView: View {
     var body: some View {
             TabView {
                 ScrollView {
-                    ForEach(1 ... 100, id: \.self) { number in
-                        Text("\(number)").font(.system(size: 24, design: .monospaced)).bold().foregroundStyle(.gray)
+                    VStack {
+                        ForEach(1 ... 100, id: \.self) { number in
+                            Text("\(number)").font(.system(size: 24, design: .monospaced)).bold().foregroundStyle(.gray)
+                        }
                     }
+                    .frame(maxWidth: .infinity)
                 }
                 .tabItem {
                         Image(systemName: "star.fill")
