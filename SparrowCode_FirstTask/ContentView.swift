@@ -16,9 +16,11 @@ struct ContentView: View {
                             ForEach(1 ... 100, id: \.self) { number in
                                 Text("\(number)").font(.system(size: 24, design: .monospaced)).bold().foregroundStyle(.gray)
                             }
+                            .frame(maxWidth: .infinity)
                         }
-                        .frame(maxWidth: .infinity)
+                        .padding(.bottom, 50)
                     }
+                    .contentMargins(.bottom, 50, for: .scrollIndicators)
                     redRectangle
                 }
                 
